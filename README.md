@@ -19,7 +19,35 @@ AWS Lambda Functions
 DynamoDB
 AWS S3
 AWS CodePipeline
+AWS SES(Simple Email Service)
 AWS SNS
 
 ## Language
 Python
+
+## Components
+
+### Heartbeat Lambda Function
+1. Scan the `living` table and get the list of recipients.
+1. Generate and send the emails.
+
+### SES
+Set the rule for receiving Emails. The received email will trigger database update lambda.
+
+### Database Update Lambda Function
+1. Update the `living` table with the received email.
+1. Check
+
+### SNS
+
+### Dispatch Lambda Function
+
+### Table for the dead
+
+### Table for the living
+
+
+
+## To do in the future
+* Encryption towards will content
+* 
