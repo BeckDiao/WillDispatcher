@@ -35,12 +35,20 @@ Python
 Set the rule for receiving Emails. The received email will trigger database update lambda.
 
 ### Database Update Lambda Function
-1. Update the `living` table with the received email.
-1. Check 
+Update the `living` table with the received email.
 
-### SNS
+### Check Lambda Function
+1. Scan the living table to check if it's time to trigger the dispatch. <last_update + times_to_trigger + period>
+1. If yes, send a message to SQS.
+
+### SQS
+Receive messages sent from **Check Lambda** and play a role as a trigger of **Dispatch Lambda**.
 
 ### Dispatch Lambda Function
+1. Get the information from SQS and double check all the information is correct from DDB.
+1. Get the will from S3.
+1. Dispatch.
+
 
 ### Table for the dead
 partition key: user id
@@ -54,7 +62,8 @@ partition key: user id
       "mother": "(+1)111-222-3333",
       "spouse": "spouse@gmail.com"
     },
-    "will_position": "s3://bucket/key"
+    "will_position": "s3://bucket/key",
+    "last_update": "123456789"
   }
 }
 ```
@@ -73,11 +82,14 @@ sort key: period
       "mother": "(+1)111-222-3333",
       "spouse": "spouse@gmail.com'"
     },
-    "will_position": "s3://bucket/key"
+    "will_position": "s3://bucket/key",
+    "last_update": "123456789"
   }
 }
 ```
 
 ## To do in the future
-* Encryption towards will content
-* 
+* Encryption towards will content.
+* Security.
+* Self-service signup system.
+* Self-service will update.
