@@ -36,17 +36,47 @@ Set the rule for receiving Emails. The received email will trigger database upda
 
 ### Database Update Lambda Function
 1. Update the `living` table with the received email.
-1. Check
+1. Check 
 
 ### SNS
 
 ### Dispatch Lambda Function
 
 ### Table for the dead
+partition key: user id
 
+```json
+{
+  'dead_beck': {
+    contact: 'beck@gmail.com',
+    love_list: {
+      'father': 'father@gmail.com',
+      'mother': '(+1)111-222-3333',
+      'spouse': 'spouse@gmail.com'
+    },
+    will_position: 's3://bucket/key'
+  }
+}
+```
 ### Table for the living
+partition key: user id
+sort key: period
 
-
+```json
+{
+  'living_beck': {
+    period: '1 day',
+    contact: 'beck@gmail.com',
+    times_to_trigger: 3,
+    love_list: {
+      'father': 'father@gmail.com',
+      'mother': '(+1)111-222-3333',
+      'spouse': 'spouse@gmail.com'
+    },
+    will_position: 's3://bucket/key'
+  }
+}
+```
 
 ## To do in the future
 * Encryption towards will content
