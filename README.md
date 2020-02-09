@@ -47,14 +47,14 @@ partition key: user id
 
 ```json
 {
-  'dead_beck': {
-    contact: 'beck@gmail.com',
-    love_list: {
-      'father': 'father@gmail.com',
-      'mother': '(+1)111-222-3333',
-      'spouse': 'spouse@gmail.com'
+  "dead_beck": {
+    "contact": "beck@gmail.com",
+    "love_list": {
+      "father": "father@gmail.com",
+      "mother": "(+1)111-222-3333",
+      "spouse": "spouse@gmail.com"
     },
-    will_position: 's3://bucket/key'
+    "will_position": "s3://bucket/key"
   }
 }
 ```
@@ -64,16 +64,16 @@ sort key: period
 
 ```json
 {
-  'living_beck': {
-    period: '1 day',
-    contact: 'beck@gmail.com',
-    times_to_trigger: 3,
-    love_list: {
-      'father': 'father@gmail.com',
-      'mother': '(+1)111-222-3333',
-      'spouse': 'spouse@gmail.com'
+  "living_beck": {
+    "period": "1 day",
+    "contact": "beck@gmail.com",
+    "times_to_trigger": 3,
+    "love_list": {
+      "father": "father@gmail.com",
+      "mother": "(+1)111-222-3333",
+      "spouse": "spouse@gmail.com'"
     },
-    will_position: 's3://bucket/key'
+    "will_position": "s3://bucket/key"
   }
 }
 ```
