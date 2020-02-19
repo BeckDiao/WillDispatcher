@@ -1,6 +1,17 @@
 # WillDispatcher
 A service used to automatically dispatch prewritten will to those people you love in case of death due to accident.
 
+## Work progress
+### Done
+* All Lambda functionality is done; Code is added to this package(hardcoded some test-use resources)
+* Test is done with manually-created resource
+
+### In progress
+* Use aws-cdk to create and set up the whole infrastructure, including CodeBuild and CodePipeline.
+
+### TODO
+* More testing before launching
+
 ## High-level Idea:
 
 ### Sign Up/New User Setup
@@ -11,16 +22,19 @@ Tell the WillDispatcher service the following things:
 
 ### How the Service work
 1. Periodically(like 1 day/week) ask users if they're still alive via Message or email.
-1. If no confirmation is received from a specific user for continous multiple times(e.g. 3 continuous times), then WillDispatcher service would think that guy may have been dead.
+1. If no confirmation is received from a specific user for continuous multiple times(e.g. 3 continuous times), then WillDispatcher service would think that guy may have been dead.
 1. Then WillDispatcher service will dispatch the will.
 
 ## Tools to be used
-AWS Lambda Functions
-DynamoDB
-AWS S3
-AWS CodePipeline
-AWS SES(Simple Email Service)
-AWS SNS
+* AWS Lambda Functions
+* DynamoDB
+* AWS S3
+* AWS CodePipeline
+* AWS SES(Simple Email Service)
+* AWS CloudFormation
+* AWS SQS
+* AWS CodeBuild
+* AWS CDK
 
 ## Language
 Python
@@ -74,7 +88,7 @@ sort key: period
 ```json
 {
   "living_beck": {
-    "period": "1 day",
+    "period": 1,
     "contact": "beck@gmail.com",
     "times_to_trigger": 3,
     "love_list": {
